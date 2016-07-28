@@ -281,9 +281,9 @@
     start = now(); // asm("rdtsc")
     while(not enough space) {
       switch(now() - start) {
-        case elapsed_time < LEVEL_ONE: asm("pause");
-        case elapsed_time < LEVEL_TWO: sched_yield();
-        case elapsed_time < TIMEOUT: usleep(1);
+        case elapsed_time < LEVEL_ONE: asm("pause"); break;
+        case elapsed_time < LEVEL_TWO: sched_yield(); break;
+        case elapsed_time < TIMEOUT: usleep(1); break;
         default: return TIMEOUT_ERROR;
       }
     }
