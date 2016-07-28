@@ -1,0 +1,39 @@
+% Outlook
+
+\begin{slide}{Outlook}
+  \begin{tikzpicture}
+    \onslide<2->{
+      \path (0, 0) node {\includegraphics[scale=0.4]{pc}};
+    }
+    \onslide<3->{
+      \draw [thick, <->]
+            (-1.2, -1) .. controls (-2.75, -0.9) and (-2.75, 0.9) .. (-1.2, 1);
+      \draw (-3.25, +0.25) node {Domain};
+      \draw (-3.25, -0.25) node {Sockets};
+    }
+    \onslide<4->{
+      \draw [thick, <->, Red]
+            (+1.2, -1) .. controls (+2.75, -0.9) and (+2.75, 0.9) .. (+1.2, 1);
+      \draw (+3.25, +0.25) node [Red] {Shared};
+      \draw (+3.25, -0.25) node [Red] {Memory};
+    }
+  \end{tikzpicture}
+\end{slide}
+
+\begin{slide}{Outlook}
+  \begin{tikzpicture}
+    \path (-3.5, 0) node {\includegraphics[scale=0.4]{pc}};
+    \path (+3.5, 0) node {\includegraphics[scale=0.4]{pc}};
+
+    \onslide<2->{
+      \draw [thick, <->]
+            (-1.75, +0.1) .. controls (0, 0.4) .. (+1.75, +0.1)
+            node [midway, above] {Internet Sockets};
+    }
+    \onslide<3->{
+      \draw [thick, <->, Red, dashed]
+            (-1.75, -0.1) .. controls (0, -0.4) .. (+1.75, -0.1)
+            node [midway, below] {RDMA};
+    }
+  \end{tikzpicture}
+\end{slide}

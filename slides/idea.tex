@@ -1,0 +1,18 @@
+% Idea
+
+\begin{slide}{Basic Idea}
+  \begin{enumerate}
+    \pitem Put on mad scientist hat
+    \pitem Overwrite syscalls\\
+           \begin{center}
+             \texttt{socket()}\\
+             \texttt{accept()}\\
+             \texttt{connect()}
+           \end{center}
+    \pitem Create shared memory channel in the background
+    \pitem Don't recompile a single file\\
+  \end{enumerate}
+  \vspace{0.2cm}
+
+  \texttt{LD\_PRELOAD=/path/to/our/library ./hyper}
+\end{slide}
