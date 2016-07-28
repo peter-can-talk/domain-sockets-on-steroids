@@ -52,10 +52,10 @@
       \begin{tabular}{l | l | l}
         \legendsquare{ProcessBlue}  Library & No Pin & \\
         \legendsquare{Red} Domain & No Pin & \\
-        \legendsquare{Green} Library & Pin & Same Socket\\
-        \legendsquare{orange} Domain & Pin & Same Socket\\
-        \legendsquare{OrangeRed} Library & Pin & Diff. Socket\\
-        \legendsquare{NavyBlue} Domain & Pin & Diff. Socket
+        \legendsquare{Green} Library & Pin & Same CPU\\
+        \legendsquare{orange} Domain & Pin & Same CPU\\
+        \legendsquare{OrangeRed} Library & Pin & Diff. CPU\\
+        \legendsquare{NavyBlue} Domain & Pin & Diff. CPU
       \end{tabular}
     };
   }
@@ -65,8 +65,8 @@
       \begin{tabular}{l | l | l}
         \legendsquare{ProcessBlue}  Library & No Pin & \\
         \legendsquare{Red} Domain & No Pin & \\
-        \legendsquare{Green} Library & Pin & Same Socket\\
-        \legendsquare{orange} Domain & Pin & Same Socket\\
+        \legendsquare{Green} Library & Pin & Same CPU\\
+        \legendsquare{orange} Domain & Pin & Same CPU\\
       \end{tabular}
     };
   }
@@ -79,4 +79,144 @@
     \draw (-0.1, \y) node [left] {\l} -- ++(0.2, 0);
   }
 \end{tikzpicture}
+\end{slide}
+
+\begin{slide}{Where does this leave us?}
+\begin{tikzpicture}
+  % TSSX
+  \barchart{3.25}{0.75}{3.53}{Green}{1.57M};
+
+  % Domain Sockets
+  \barchart{4.25}{0.75}{0.46}{orange}{154K};
+
+  % Internet Sockets
+  \onslide<2->{
+    \barchart{0.25}{0.75}{0.15}{Red}{67K};
+  }
+
+  % FIFOs
+  \onslide<3->{
+    \barchart{1.25}{0.75}{0.27}{ProcessBlue}{120K};
+  }
+
+  % Pipes
+  \onslide<4->{
+    \barchart{7.25}{0.75}{0.23}{teal}{103K};
+  }
+
+  % Message Queues
+  \onslide<5->{
+    \barchart{5.25}{0.75}{0.4}{OrangeRed}{178K};
+  }
+
+  % ZeroMQ
+  \onslide<6->{
+    \barchart{6.25}{0.75}{0.03}{NavyBlue}{15K};
+  }
+
+  % Shared Memory
+  \onslide<7->{
+    \barchart{2.25}{0.75}{4.95}{Lavender}{2.2M};
+  }
+
+  % Legend
+  \onslide<1>{
+    \draw (7.5, 6) node {
+      \footnotesize
+      \begin{tabular}{l}
+        \legendsquare{Green} Library\\
+        \legendsquare{orange} Domain Sockets
+      \end{tabular}
+    };
+  }
+  \onslide<2>{
+    \draw (7.5, 6) node {
+      \footnotesize
+      \begin{tabular}{l}
+        \legendsquare{Green} Library\\
+        \legendsquare{orange} Domain Sockets\\
+        \legendsquare{Red} Internet Sockets\\
+      \end{tabular}
+    };
+  }
+  \onslide<3>{
+    \draw (7.5, 6) node {
+      \footnotesize
+      \begin{tabular}{l}
+        \legendsquare{Green} Library\\
+        \legendsquare{orange} Domain Sockets\\
+        \legendsquare{Red} Internet Sockets\\
+        \legendsquare{ProcessBlue} FIFOs\\
+      \end{tabular}
+    };
+  }
+  \onslide<4>{
+    \draw (7.5, 6) node {
+      \footnotesize
+      \begin{tabular}{l}
+        \legendsquare{Green} Library\\
+        \legendsquare{orange} Domain Sockets\\
+        \legendsquare{Red} Internet Sockets\\
+        \legendsquare{ProcessBlue} FIFOs\\
+        \legendsquare{Emerald} Pipes\\
+      \end{tabular}
+    };
+  }
+  \onslide<5>{
+    \draw (7.5, 6) node {
+      \footnotesize
+      \begin{tabular}{l}
+        \legendsquare{Green} Library\\
+        \legendsquare{orange} Domain Sockets\\
+        \legendsquare{Red} Internet Sockets\\
+        \legendsquare{ProcessBlue} FIFOs\\
+        \legendsquare{Emerald} Pipes\\
+        \legendsquare{OrangeRed} Message Queues\\
+      \end{tabular}
+    };
+  }
+  \onslide<6>{
+    \draw (7.5, 6) node {
+      \footnotesize
+      \begin{tabular}{l}
+        \legendsquare{Green} Library\\
+        \legendsquare{orange} Domain Sockets\\
+        \legendsquare{Red} Internet Sockets\\
+        \legendsquare{ProcessBlue} FIFOs\\
+        \legendsquare{Emerald} Pipes\\
+        \legendsquare{OrangeRed} Message Queues\\
+        \legendsquare{NavyBlue} ZeroMQ\\
+      \end{tabular}
+    };
+  }
+  \onslide<7>{
+    \draw (7.5, 6) node {
+      \footnotesize
+      \begin{tabular}{l}
+        \legendsquare{Green} Library\\
+        \legendsquare{orange} Domain Sockets\\
+        \legendsquare{Red} Internet Sockets\\
+        \legendsquare{ProcessBlue} FIFOs\\
+        \legendsquare{Emerald} Pipes\\
+        \legendsquare{OrangeRed} Message Queues\\
+        \legendsquare{NavyBlue} ZeroMQ\\
+        \legendsquare{Lavender} Shared Memory\\
+      \end{tabular}
+    };
+  }
+
+  % Axes (draw here to overdraw bar borders)
+  \draw [-|] (0, 0) node [left] {0} -- (8.5, 0);
+  \draw [->] (0, 0) -- (0, 6) node [left] {\footnotesize msg/s};
+
+  \foreach \y/\l in {1.25/500K, 2.25/1M, 3.375/1.5M, 4.5/2M} {
+    \draw (-0.1, \y) node [left] {\l} -- ++(0.2, 0);
+  }
+\end{tikzpicture}
+\end{slide}
+
+\begin{slide}{PostGres}
+\end{slide}
+
+\begin{slide}{HyPer}
 \end{slide}

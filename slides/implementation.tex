@@ -278,7 +278,7 @@
   \vspace{0.8cm}
 
   \begin{lstlisting}
-    start = now();
+    start = now(); // asm("rdtsc")
     while(not enough space) {
       switch(now() - start) {
         case elapsed_time < LEVEL_ONE: asm("pause");
