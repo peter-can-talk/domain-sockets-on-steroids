@@ -12,61 +12,46 @@
     % Domain
     \fill [Red] (2.25, 0) rectangle ++(0.75, 0.4);
     \draw (2.625, 0.7) node {\footnotesize 130K};
-  }
 
-  % Same Socket
-  \onslide<4->{
-    % TSSX
-    \fill [Green] (3.5, 0) rectangle ++(0.75, 4.7);
-    \draw (3.875, 5) node {\footnotesize 1.57M};
-
-    % Domain
-    \fill [orange] (4.75, 0) rectangle ++(0.75, 0.46);
-    \draw (5.125, 0.76) node {\footnotesize 154K};
+    % Label
+    \draw (2, -0.4) node {\small No Pin};
   }
 
   % Different socket
   \onslide<3->{
     % TSSX
-    \fill [OrangeRed] (6, 0) rectangle ++(0.75, 2.5);
+    \fill [ProcessBlue] (6, 0) rectangle ++(0.75, 2.5);
     \draw (6.375, 2.8) node {\footnotesize 831K};
 
     % Domain
-    \fill [NavyBlue] (7.25, 0) rectangle ++(0.75, 0.4);
+    \fill [Red] (7.25, 0) rectangle ++(0.75, 0.4);
     \draw (7.625, 0.7) node {\footnotesize 136K};
+
+    % Label
+    \draw (7, -0.4) node {\small Diff. CPU};
+  }
+
+  % Same Socket
+  \onslide<4->{
+    % TSSX
+    \fill [ProcessBlue] (3.5, 0) rectangle ++(0.75, 4.7);
+    \draw (3.875, 5) node {\footnotesize 1.57M};
+
+    % Domain
+    \fill [Red] (4.75, 0) rectangle ++(0.75, 0.46);
+    \draw (5.125, 0.76) node {\footnotesize 154K};
+
+    % Label
+    \draw (4.5, -0.4) node {\small Same CPU};
   }
 
   % Legend
-  \onslide<2>{
-    \draw (7.5, 6) node {
+  \onslide<2->{
+    \draw (7, 6) node {
       \footnotesize
-      \begin{tabular}{l | l}
-        \legendsquare{ProcessBlue}  Library & No Pin\\
-        \legendsquare{Red} Domain & No Pin\\
-      \end{tabular}
-    };
-  }
-  \onslide<4>{
-    \draw (7.5, 6) node {
-      \footnotesize
-      \begin{tabular}{l | l | l}
-        \legendsquare{ProcessBlue}  Library & No Pin & \\
-        \legendsquare{Red} Domain & No Pin & \\
-        \legendsquare{Green} Library & Pin & Same CPU\\
-        \legendsquare{orange} Domain & Pin & Same CPU\\
-        \legendsquare{OrangeRed} Library & Pin & Diff. CPU\\
-        \legendsquare{NavyBlue} Domain & Pin & Diff. CPU
-      \end{tabular}
-    };
-  }
-  \onslide<3>{
-    \draw (7.5, 6) node {
-      \footnotesize
-      \begin{tabular}{l | l | l}
-        \legendsquare{ProcessBlue}  Library & No Pin & \\
-        \legendsquare{Red} Domain & No Pin & \\
-        \legendsquare{Green} Library & Pin & Same CPU\\
-        \legendsquare{orange} Domain & Pin & Same CPU\\
+      \begin{tabular}{l}
+        \legendsquare{ProcessBlue} Our Library\\
+        \legendsquare{Red} Domain Sockets
       \end{tabular}
     };
   }
@@ -87,7 +72,7 @@
   \barchart{3.25}{0.75}{3.53}{Green}{1.57M};
 
   % Domain Sockets
-  \barchart{4.25}{0.75}{0.46}{orange}{154K};
+  \barchart{4.25}{0.75}{0.35}{orange}{154K};
 
   % Internet Sockets
   \onslide<2->{
@@ -121,7 +106,7 @@
 
   % Legend
   \onslide<1>{
-    \draw (7.5, 6) node {
+    \draw (7.5, 5) node {
       \footnotesize
       \begin{tabular}{l}
         \legendsquare{Green} Library\\
@@ -130,7 +115,7 @@
     };
   }
   \onslide<2>{
-    \draw (7.5, 6) node {
+    \draw (7.5, 5) node {
       \footnotesize
       \begin{tabular}{l}
         \legendsquare{Green} Library\\
@@ -140,7 +125,7 @@
     };
   }
   \onslide<3>{
-    \draw (7.5, 6) node {
+    \draw (7.5, 5) node {
       \footnotesize
       \begin{tabular}{l}
         \legendsquare{Green} Library\\
@@ -151,7 +136,7 @@
     };
   }
   \onslide<4>{
-    \draw (7.5, 6) node {
+    \draw (7.5, 5) node {
       \footnotesize
       \begin{tabular}{l}
         \legendsquare{Green} Library\\
@@ -163,7 +148,7 @@
     };
   }
   \onslide<5>{
-    \draw (7.5, 6) node {
+    \draw (7.5, 5) node {
       \footnotesize
       \begin{tabular}{l}
         \legendsquare{Green} Library\\
@@ -176,7 +161,7 @@
     };
   }
   \onslide<6>{
-    \draw (7.5, 6) node {
+    \draw (7.5, 5) node {
       \footnotesize
       \begin{tabular}{l}
         \legendsquare{Green} Library\\
@@ -190,7 +175,7 @@
     };
   }
   \onslide<7>{
-    \draw (7.5, 6) node {
+    \draw (7.5, 5) node {
       \footnotesize
       \begin{tabular}{l}
         \legendsquare{Green} Library\\
@@ -215,8 +200,50 @@
 \end{tikzpicture}
 \end{slide}
 
-\begin{slide}{PostGres}
-\end{slide}
+\begin{slide}{TPC-B Benchmarks}
+  \begin{tikzpicture}
 
-\begin{slide}{HyPer}
+    % No pin
+    \onslide<2->{
+      % TSSX
+      \barchart{1.5}{1}{2.5}{ProcessBlue}{45K};
+
+      % Domain
+      \barchart{2.75}{1}{1.46}{Red}{25.9K};
+
+      % Label
+      \draw (2.6, -0.4) node {\small PostGres};
+    }
+
+    % Different socket
+    \onslide<3->{
+      % TSSX
+      \barchart{5.5}{1}{3.7}{ProcessBlue}{65.7K};
+
+      % Domain
+      \barchart{6.75}{1}{1.86}{Red}{33.2K};
+
+      % Label
+      \draw (6.7, -0.4) node {\small HyPer};
+    }
+
+    % Legend
+    \onslide<2->{
+      \draw (7, 5.5) node {
+        \footnotesize
+        \begin{tabular}{l}
+          \legendsquare{ProcessBlue} Our Library\\
+          \legendsquare{Red} Domain Sockets
+        \end{tabular}
+      };
+    }
+
+    % Axes (draw here to overdraw bar borders)
+    \draw [-|] (0, 0) node [left] {0} -- (9.2, 0);
+    \draw [->] (0, 0) -- (0, 6) node [left] {\footnotesize tps};
+
+    \foreach \y/\l in {2.5/40K, 4.5/80K} {
+      \draw (-0.1, \y) node [left] {\l} -- ++(0.2, 0);
+    }
+  \end{tikzpicture}
 \end{slide}
